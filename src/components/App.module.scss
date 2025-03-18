@@ -1,0 +1,28 @@
+
+.button {
+  background-color: tomato;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background-color: red;
+  }
+  &:active {
+    background-color: rgb(0, 161, 43);
+  }
+}
+
+.value {
+  font-size: 100px;
+  
+}
+
+
