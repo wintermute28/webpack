@@ -5,6 +5,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BiuldOptions } from "./types/types";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { platform } from "os";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export function buildPlugins({
   mode,
@@ -22,10 +24,12 @@ export function buildPlugins({
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ];
 
   if (isDev) {
     plugins.push(new webpack.ProgressPlugin());
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   if (isProd) {

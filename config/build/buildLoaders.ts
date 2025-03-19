@@ -1,7 +1,6 @@
 import { ModuleOptions } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BiuldOptions } from "./types/types";
-
 export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
   const isDev = options.mode === "development";
 
@@ -71,9 +70,15 @@ export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
       loader: "ts-loader",
       options: {
         transpileOnly: true,
+        getCustomTransformers: () => ({
+          before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+        }),
       },
     },
   };
 
   return [assetLoader, scssLoader, tsLoader, svgrLoader];
+}
+function ReactRefreshTypeScript() {
+  throw new Error("Function not implemented.");
 }

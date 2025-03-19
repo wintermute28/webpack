@@ -9,5 +9,6 @@ export function buildDevServer(options: BiuldOptions): DevServerConfiguration {
     open: true,
     // эта опция работает только для dev-сервера
     historyApiFallback: true,
+    hot: true,
   };
 }
