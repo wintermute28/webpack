@@ -7,5 +7,7 @@ export function buildDevServer(options: BiuldOptions): DevServerConfiguration {
     // npm run start -- --env port=3001
     //вместо 3001 можеи указать любой порт при запуске
     open: true,
+    // эта опция работает только для dev-сервера
+    historyApiFallback: true,
   };
 }

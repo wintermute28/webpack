@@ -9,4 +9,5 @@ export interface BiuldOptions {
   port: number;
   paths: BuildPaths;
   mode: BuildMode;
+  analyzer?: boolean;
 }
