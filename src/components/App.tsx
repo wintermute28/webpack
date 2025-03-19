@@ -2,6 +2,9 @@ import { useState } from "react";
 import classes from "./App.module.scss";
 import { Link, Outlet } from "react-router-dom";
 import About from "@/pages/about/About";
+import imgPng from "@/assets/cubes.png";
+import imgJpg from "@/assets/Cat.jpg";
+import ImgSvg from "@/assets/alien.svg";
 export const App = () => {
   const [count, setCount] = useState<number>(0);
 
@@ -15,8 +18,15 @@ export const App = () => {
 
   return (
     <div>
+      <div>
+        <img width={200} src={imgPng} alt="imgPng" />
+        <img width={200} src={imgJpg} alt="imgJpg" />
+      </div>
+      <div>
+        <ImgSvg width={300} height={300} style={{ color: "red" }} />
+      </div>
       <Link to={"/about"}>about</Link>
-      <hr />
+      <br />
       <Link to={"/shop"}>shop</Link>
       <h3>Counter</h3>
       <h4 className={classes.value}>{count}</h4>
