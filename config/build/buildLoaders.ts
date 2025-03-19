@@ -54,12 +54,25 @@ export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
     ],
   };
 
+  // const tsLoader = {
+  //   // ts-loader умеет работать с jsx(tsx)
+  //   // без TS пришлось бы подключать babel-loader
+  //   test: /\.tsx?$/,
+  //   use: "ts-loader",
+  //   exclude: /node_modules/,
+  // };
+
   const tsLoader = {
     // ts-loader умеет работать с jsx(tsx)
     // без TS пришлось бы подключать babel-loader
     test: /\.tsx?$/,
-    use: "ts-loader",
     exclude: /node_modules/,
+    use: {
+      loader: "ts-loader",
+      options: {
+        transpileOnly: true,
+      },
+    },
   };
 
   return [assetLoader, scssLoader, tsLoader, svgrLoader];

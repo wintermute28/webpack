@@ -3,12 +3,17 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 import { buildWebpack } from "./config/build/buildWebpack";
-import { BuildMode, BuildPaths } from "./config/build/types/types";
+import {
+  BuildMode,
+  BuildPaths,
+  BuildPlatform,
+} from "./config/build/types/types";
 
 interface EnvVariables {
   analyzer?: boolean;
-  mode: BuildMode;
-  port: number;
+  mode?: BuildMode;
+  port?: number;
+  platform?: BuildPlatform;
 }
 
 export default (env: EnvVariables) => {
@@ -23,6 +28,7 @@ export default (env: EnvVariables) => {
     mode: env.mode ?? "development",
     paths,
     analyzer: env.analyzer,
+    platform: env.platform ?? "desktop",
   });
 
   return config;

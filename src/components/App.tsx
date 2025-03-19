@@ -16,8 +16,79 @@ export const App = () => {
     setCount((prev) => prev - 1);
   };
 
+  interface TreeItem {
+    id: string;
+    children?: TreeItem[];
+  }
+
+  const deepTree: TreeItem = {
+    id: "A",
+    children: [
+      {
+        id: "B",
+        children: [
+          {
+            id: "C",
+            children: [
+              {
+                id: "D",
+                children: [
+                  { id: "E" }, // 5-й уровень вложенности
+                  { id: "F" }, // 5-й уровень вложенности
+                ],
+              },
+              { id: "G" }, // 4-й уровень вложенности
+            ],
+          },
+          { id: "H" }, // 3-й уровень вложенности
+        ],
+      },
+      {
+        id: "I",
+        children: [
+          { id: "J" }, // 2-й уровень вложенности
+          { id: "K" }, // 2-й уровень вложенности
+        ],
+      },
+      { id: "L" }, // 1-й уровень вложенности
+    ],
+  };
+
+  const getAllItems = (tree: TreeItem): string[] => {
+    const result: string[] = [];
+
+    const scanNode = (node: TreeItem) => {
+      result.push(node.id);
+      if (node.children) {
+        node.children.forEach((c) => scanNode(c));
+      }
+    };
+    scanNode(tree);
+    return result;
+  };
+
+  const a = getAllItems(deepTree);
+
+  // if (__PLATFORM__ === "desktop") {
+  //   return (
+  //     <div>
+  //       <h1>ISDESKTOPPLATFORM</h1>
+  //     </div>
+  //   );
+  // }
+
+  // if (__PLATFORM__ === "mobile") {
+  //   return (
+  //     <div>
+  //       <h1>ISMOBILEPLATFORM</h1>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div>
+      <h1>PLATFORM={__PLATFORM__}</h1>
+      <div>{a}</div>
       <div>
         <img width={200} src={imgPng} alt="imgPng" />
         <img width={200} src={imgJpg} alt="imgJpg" />
