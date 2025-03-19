@@ -1,6 +1,8 @@
 import { ModuleOptions } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BiuldOptions } from "./types/types";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+
 export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
   const isDev = options.mode === "development";
 
@@ -71,7 +73,7 @@ export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
       options: {
         transpileOnly: true,
         getCustomTransformers: () => ({
-          before: [isDev && ReactRefreshTypeScript()].filter(Boolean),
+          before: [ReactRefreshTypeScript()],
         }),
       },
     },
