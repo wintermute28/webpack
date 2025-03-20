@@ -1,9 +1,10 @@
 import { ModuleOptions } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { BiuldOptions } from "./types/types";
+import { BuildOptions } from "./types/types";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { buildBabelLoader } from "./babel/buildBabelLoader";
 
-export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
+export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const isDev = options.mode === "development";
 
   const assetLoader = {
@@ -78,8 +79,16 @@ export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
       },
     },
   };
+  //Babel можно конфигурировать или из лоадеров, или из  файла babel.config.json, просто передаем туда объект options, в котором включаем нужные пресеты
+  const babelLoader = buildBabelLoader(options);
 
-  return [assetLoader, scssLoader, tsLoader, svgrLoader];
+  return [
+    assetLoader,
+    scssLoader,
+    //  tsLoader,
+    babelLoader,
+    svgrLoader,
+  ];
 }
 function ReactRefreshTypeScript() {
   throw new Error("Function not implemented.");

@@ -2,7 +2,7 @@ import webpack, { DefinePlugin } from "webpack";
 import { Configuration } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { BiuldOptions } from "./types/types";
+import { BuildOptions } from "./types/types";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 // import { platform } from "os";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
@@ -15,7 +15,7 @@ export function buildPlugins({
   paths,
   analyzer,
   platform,
-}: BiuldOptions): Configuration["plugins"] {
+}: BuildOptions): Configuration["plugins"] {
   const isDev = mode === "development";
   const isProd = mode === "production";
 

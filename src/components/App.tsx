@@ -37,11 +37,11 @@ export const App = () => {
       {/* <h1>PLATFORM={__PLATFORM__}</h1> */}
       {/* <div>{a}</div> */}
       <div>
-        <img width={200} src={imgPng} alt="imgPng" />
-        <img width={200} src={imgJpg} alt="imgJpg" />
+        <img width={100} src={imgPng} alt="imgPng" />
+        <img width={100} src={imgJpg} alt="imgJpg" />
       </div>
       <div>
-        <ImgSvg width={300} height={300} style={{ color: "red" }} />
+        <ImgSvg width={50} height={50} style={{ color: "red" }} />
       </div>
       <Link to={"/about"}>about</Link>
       <br />
