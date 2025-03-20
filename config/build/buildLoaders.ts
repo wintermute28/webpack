@@ -73,7 +73,7 @@ export function buildLoaders(options: BiuldOptions): ModuleOptions["rules"] {
       options: {
         transpileOnly: true,
         getCustomTransformers: () => ({
-          before: [ReactRefreshTypeScript()],
+          before: isDev ? [require("react-refresh-typescript")()] : [],
         }),
       },
     },
