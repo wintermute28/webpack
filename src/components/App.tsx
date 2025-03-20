@@ -33,9 +33,10 @@ export const App = () => {
   // }
 
   return (
-    <div>
-      {/* <h1>PLATFORM={__PLATFORM__}</h1> */}
+    <div data-testid={"App.DataTestId"}>
+      <h1 data-testid={"PLATFORM"}>PLATFORM={__PLATFORM__}</h1>
       {/* <div>{a}</div> */}
+      <h1></h1>
       <div>
         <img width={100} src={imgPng} alt="imgPng" />
         <img width={100} src={imgJpg} alt="imgJpg" />
